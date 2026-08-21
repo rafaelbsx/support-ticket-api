@@ -1,0 +1,32 @@
+const http = require("node:http");
+const tickets = [
+  {
+    id: 1,
+    title: "User cannot access the system",
+    status: "open",
+  },
+  {
+    id: 2,
+    title: "Report is not loading",
+    status: "closed",
+  },
+];
+
+const server = http.createServer((request, response) => {
+    response.setHeader("content-type", "application/json");
+    
+    if (request.method === "GET" && request.url === "/tickets") {
+        response.statusCode = 200;
+        response.end(JSON.stringify({ tickets }));
+        return;
+    }
+
+    response.statusCode = 404;
+    response.end(
+        JSON.stringify({ message: "Route not found" })
+    );
+});
+
+server.listen(3000, () => {
+    console.log("Servidor disponível em http://localhost:3000");
+});
