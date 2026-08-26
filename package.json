@@ -4,7 +4,7 @@
   "description": "API educacional para registro e acompanhamento de chamados de suporte",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js" 
   },
   "keywords": [],
   "author": "RafaelBSX",

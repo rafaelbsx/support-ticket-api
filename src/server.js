@@ -15,11 +15,20 @@ const tickets = [
 const server = http.createServer((request, response) => {
     response.setHeader("content-type", "application/json");
     
-    if (request.method === "GET" && request.url === "/tickets") {
-        response.statusCode = 200;
-        response.end(JSON.stringify({ tickets }));
-        return;
-    }
+  if (request.method === "GET" && request.url.startsWith("/tickets/")) {
+    const id = Number(request.url.split("/")[2]);
+    const ticket = tickets.find((ticket) => ticket.id === id);
+
+  if (!ticket) {
+    response.statusCode = 404;
+    response.end(JSON.stringify({ message: "Ticket not found" }));
+    return;
+  }
+
+  response.statusCode = 200;
+  response.end(JSON.stringify({ ticket }));
+  return;
+}
 
     response.statusCode = 404;
     response.end(
