@@ -4,10 +4,15 @@
   "description": "API educacional para registro e acompanhamento de chamados de suporte",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.js" 
+    "start": "node src/server.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [],
   "author": "RafaelBSX",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "prettier": "3.9.6"
+  }
 }
